@@ -2,16 +2,14 @@
 
 {% block content %}
 
-<h2>Currenttodos</h2>
-
 <ul>
 
   {% for todo in todos %}
   <li>
-    <a href="{% url 'viewtodo' todo.id  %}">
+
     {% if todo.important %}<b>{% endif %}{{ todo.title }}</b>
     {% if todo.memo %} - {{ todo.memo }}  {% endif %}
-    </a>
+    - {{ todo.datecompleted|date:'M j Y H:i' }}
   </li>
   {% endfor %}
 

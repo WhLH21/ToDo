@@ -1,0 +1,33 @@
+{% extends 'todo\base.html' %}
+
+{% block content %}
+
+{{ todo.title }}
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="sumbit">Save</button>
+</form>
+
+<form method="POST" action="{% url 'completedtodo' todo.id %}">
+
+{% csrf_token %}
+
+<button type="sumbit">Complete</button>
+</form>
+
+<form method="POST" action="{% url 'deletetodo' todo.id %}">
+
+{% csrf_token %}
+
+<button type="sumbit">Delete</button>
+</form>
+
+
+
+
+{% endblock %}

@@ -1,22 +1,26 @@
-
 {% if user.is_authenticated %}
 
 Loggen as an {{ user.username }}
 
-<a href="#">Log out </a>
+<a href="{% url 'createtodo' %}">Create</a>
+<a href="{% url 'completedtodos' %}">Completed</a>
+<a href="{% url 'currenttodos' %}">Current</a>
+
+<form action="{% url 'logoutuser' %}" method="POST">
+
+{% csrf_token %}
+
+<button type="sumbit">Logout</button>
+</form>
 
 {% else %}
 
-<a href="#">Sign up</a>
-<a href="#">Log in</a>
+<a href="{% url 'signupuser' %}">Sign up</a>
+<a href="{% url 'loginuser' %}">Log in</a>
 
 {% endif %}
 
 <br>
 <br>
-
-
-
-
 
 {% block content %}{% endblock %}
